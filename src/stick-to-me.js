@@ -152,7 +152,7 @@
                             {
                                 if (chromealert)
                                 {
-                                    var cookiehowm = getamount("ck_glue_visit");
+                                    var cookiehowm = getamount("ck_stick_visit");
                                     if (settings.cookie == false || (settings.cookie == true && (cookiehowm < settings.maxamount || settings.maxamount == 0)))
                                     {
                                         settings.onleave.call(this, leaveside);
@@ -165,7 +165,7 @@
                                         if (settings.cookie == true)
                                         {
                                             cookiehowm++;
-                                            document.cookie="ck_glue_visit="+cookiehowm+"; path=/";
+                                            document.cookie="ck_stick_visit="+cookiehowm+"; path=/";
                                         }
                                         lasttime = new Date().getTime();
                                     }
@@ -182,6 +182,31 @@
                 chromefix();
             }
 
+        }
+
+        function showbox()
+        {
+            if ($.data(document.body, "stick_var") != 1)
+            {
+                $.data(document.body, "stick_var", 1);
+                $('<div class="stick_block_layer"></div>').appendTo('body').css(settings.backgroundcss).fadeIn(settings.fadespeed);
+                $('<div class="stick_container"></div>').appendTo('body');
+                $(settings.layer).clone().show().css(settings.boxcss).appendTo(".stick_container");
+                if (settings.bgclickclose)
+                {
+                    $('.stick_block_layer').click(function(){
+                        gl_cl();
+                    });
+                }
+                if (settings.escclose)
+                {
+                    $("body").keyup(function(e){
+                        if(e.which == 27){
+                            gl_cl();
+                        }
+                    });
+                }
+            }
         }
 
     }
