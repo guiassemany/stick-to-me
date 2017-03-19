@@ -129,6 +129,51 @@
                     leaveside = "bottom";
                 }
             }
+
+            if (/Firefox[\/\s](\d+\.\d+)/.test(navigator.userAgent))
+            {
+                if (clienty < 0 && clienty > -windowHeight && clientx > 0 && clientx < windowWidth)
+                {
+                    return;
+                }
+            }
+
+            if ($.inArray(leaveside, settings.trigger) != -1 || $.inArray('all', settings.trigger) != -1)
+            {
+                var recenttime = new Date().getTime();
+                if ((recenttime-startuptime) >= settings.mintime)
+                {
+                    if ((recenttime-startuptime) <= settings.maxtime || settings.maxtime == 0)
+                    {
+                        if (howmanytimes < settings.maxamount || settings.maxamount == 0)
+                        {
+                            if ((recenttime-lasttime) >= settings.interval || settings.interval == 0)
+                            {
+                                if (chromealert)
+                                {
+                                    var cookiehowm = getamount("ck_glue_visit");
+                                    if (settings.cookie == false || (settings.cookie == true && (cookiehowm < settings.maxamount || settings.maxamount == 0)))
+                                    {
+                                        settings.onleave.call(this, leaveside);
+
+                                        if (settings.layer != "")
+                                        {
+                                            showbox();
+                                        }
+                                        howmanytimes++;
+                                        if (settings.cookie == true)
+                                        {
+                                            cookiehowm++;
+                                            document.cookie="ck_glue_visit="+cookiehowm+"; path=/";
+                                        }
+                                        lasttime = new Date().getTime();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
 
     }
