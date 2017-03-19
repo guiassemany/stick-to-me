@@ -25,7 +25,7 @@
             escclose : true,
             onleave : function (e) {},
             disableleftscroll : true	// chrome disable
-        }
+        };
 
 
         var configuration = $.extend({}, defaults, configs);
@@ -86,6 +86,12 @@
                 offsetbind = true;
             });
         }
+
+        $(window).resize(function(e)
+        {
+            windowHeight = $(window).height();
+            windowWidth = $(window).width();
+        });
 
     }
 
