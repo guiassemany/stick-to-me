@@ -93,6 +93,15 @@
             windowWidth = $(window).width();
         });
 
+        function ontheleave(e){
+            var scrolltop = document.documentElement ? document.documentElement.scrollTop : document.body.scrollTop;
+            var scrollleft = document.documentElement ? document.documentElement.scrollLeft : document.body.scrollLeft;
+            scrolltop = ($(document).scrollTop() > scrolltop) ? $(document).scrollTop() : scrolltop;
+            scrollleft = ($(document).scrollLeft() > scrollleft) ? $(document).scrollLeft() : scrollleft;
+
+
+        }
+
     }
 
 });
