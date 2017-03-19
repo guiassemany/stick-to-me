@@ -93,7 +93,8 @@
             windowWidth = $(window).width();
         });
 
-        function ontheleave(e){
+        function ontheleave(e)
+        {
             var scrolltop = document.documentElement ? document.documentElement.scrollTop : document.body.scrollTop;
             var scrollleft = document.documentElement ? document.documentElement.scrollLeft : document.body.scrollLeft;
             scrolltop = ($(document).scrollTop() > scrolltop) ? $(document).scrollTop() : scrolltop;
@@ -174,12 +175,13 @@
                     }
                 }
             }
-        }
 
-        if (chrome)
-        {
-            $(document).unbind("mouseleave");
-            chromefix();
+            if (chrome)
+            {
+                $(document).unbind("mouseleave");
+                chromefix();
+            }
+
         }
 
     }
