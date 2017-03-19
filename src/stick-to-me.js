@@ -41,6 +41,15 @@
         var chromealert = true;
         var lastx, lasty = 0;
 
+        if (/Chrome/.test(navigator.userAgent))
+        {
+            var chrome = true;
+            if ($(document).width() > windowWidth && settings.disableleftscroll == true)
+            {
+                chromealert = false;
+            }
+        }
+
     }
 
 });
