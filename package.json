@@ -1,0 +1,24 @@
+{
+  "name": "stick-to-me",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/stick-to-me.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guiassemany/stick-to-me.git"
+  },
+  "keywords": [
+    "jQuery",
+    "exit",
+    "popup"
+  ],
+  "author": "Guilherme Assemany <guilhermeassemany@hotmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guiassemany/stick-to-me/issues"
+  },
+  "homepage": "https://github.com/guiassemany/stick-to-me#readme"
+}
