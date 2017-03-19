@@ -57,6 +57,36 @@
             boxcss: {'z-index':'1000','position':'fixed','left':'50%','top':'50%','height': (conth) + 'px','width': (contw ) + 'px', 'margin-left':(-contw/2)+'px', 'margin-top':(-conth/2) + 'px'}
         };
 
+        $.extend(true, configuration, reqsettings);
+
+        $(document).bind('mousemove',function(e)
+        {
+            lastx = e.pageX;
+            lasty = e.pageY;
+        });
+
+        $(document).bind('mouseleave', function(e) { setTimeout(function(){ontheleave(e);}, settings.delay); });
+
+        if (chrome)
+        {
+            $(document).unbind("mouseleave");
+            chromefix();
+        }
+
+        function chromefix()
+        {
+            offsetbind = false;
+            $(document).bind('mousemove.bindoffset',function(e)
+            {
+                if (offsetbind)
+                {
+                    $(document).bind('mouseleave', function(e) { setTimeout(function(){ontheleave(e);}, settings.delay); });
+                    $(document).unbind("mousemove.bindoffset");
+                }
+                offsetbind = true;
+            });
+        }
+
     }
 
 });
