@@ -176,6 +176,12 @@
             }
         }
 
+        if (chrome)
+        {
+            $(document).unbind("mouseleave");
+            chromefix();
+        }
+
     }
 
 });
