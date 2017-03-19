@@ -28,9 +28,9 @@
         };
 
 
-        var configuration = $.extend({}, defaults, configs);
+        var settings = $.extend({}, defaults, configs);
 
-        $(configuration.layer).hide();
+        $(settings.layer).hide();
 
         var startuptime = new Date().getTime();
         var windowHeight = $(window).height();
@@ -57,7 +57,7 @@
             boxcss: {'z-index':'1000','position':'fixed','left':'50%','top':'50%','height': (conth) + 'px','width': (contw ) + 'px', 'margin-left':(-contw/2)+'px', 'margin-top':(-conth/2) + 'px'}
         };
 
-        $.extend(true, configuration, reqsettings);
+        $.extend(true, settings, reqsettings);
 
         $(document).bind('mousemove',function(e)
         {

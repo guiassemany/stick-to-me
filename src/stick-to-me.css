@@ -1,0 +1,116 @@
+.stick_block_layer {
+	background-image: url("pattern.png");
+	opacity: 0.7;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+	filter: alpha(opacity=70);
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+.stick_popup {
+	height: 400px;
+	width: 700px;
+	box-shadow: 0px 0px 7px #4a4a4a;
+	-moz-box-shadow: 0px 0px 7px #4a4a4a;
+	-webkit-box-shadow: 0px 0px 7px #4a4a4a;
+	background: #f2f2f2;
+	-webkit-animation: zoomin 0.7s;
+	animation: zoomin 0.7s;
+}
+
+.stick_content {
+	padding: 20px;
+}
+
+.stick_close {
+	cursor: pointer;
+	position: relative;
+	top: 0px;
+	left: 0px;
+	float: right;
+	font-family: Arial;
+	font-size: 17px;
+	background-color: #d1d1d1;
+	color: #4c4c4c;
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	text-decoration: none;
+}
+
+/* 
+CSS3 animation keyframes.
+*/
+@-webkit-keyframes zoomin {
+
+	0% {
+		-webkit-transform: scale(0);
+		-ms-transform: scale(0);
+		transform: scale(0);
+		opacity: 0;
+	}
+
+	50% {
+		-webkit-transform: scale(1.04);
+		-ms-transform: scale(1.04);
+		transform: scale(1.04);
+		opacity: 1;
+	}
+  
+	100% {
+		-webkit-transform: scale(1);
+		-ms-transform: scale(1);
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+@-ms-keyframes zoomin {
+
+	0% {
+		-webkit-transform: scale(0);
+		-ms-transform: scale(0);
+		transform: scale(0);
+		opacity: 0;
+	}
+
+	50% {
+		-webkit-transform: scale(1.04);
+		-ms-transform: scale(1.04);
+		transform: scale(1.04);
+		opacity: 1;
+	}
+  
+	100% {
+		-webkit-transform: scale(1);
+		-ms-transform: scale(1);
+		transform: scale(1);
+		opacity: 1;
+	}
+	
+}
+@keyframes zoomin {
+
+	0% {
+		-webkit-transform: scale(0);
+		-ms-transform: scale(0);
+		transform: scale(0);
+		opacity: 0;
+	}
+
+	50% {
+		-webkit-transform: scale(1.04);
+		-ms-transform: scale(1.04);
+		transform: scale(1.04);
+		opacity: 1;
+	}
+  
+	100% {
+		-webkit-transform: scale(1);
+		-ms-transform: scale(1);
+		transform: scale(1);
+		opacity: 1;
+	}
+}
