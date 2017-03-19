@@ -99,7 +99,36 @@
             scrolltop = ($(document).scrollTop() > scrolltop) ? $(document).scrollTop() : scrolltop;
             scrollleft = ($(document).scrollLeft() > scrollleft) ? $(document).scrollLeft() : scrollleft;
 
+            if ((Math.round(e.pageX) == -1 || Math.round(e.pageY) == -1) || (e.pageX == -3 || e.pageY == -3))
+            {
+                var clienty = -lasty + scrolltop;
+                var clientx = lastx - scrollleft;
+            } else {
+                var clienty = -e.pageY + scrolltop;
+                var clientx = e.pageX - scrollleft;
+            }
 
+            var ey1 = (-windowHeight / windowWidth) * clientx;
+            var ey2 = ((windowHeight / windowWidth) * clientx) - windowHeight;
+
+            var leaveside;
+            if (clienty >= ey1)
+            {
+                if (clienty >= ey2)
+                {
+                    leaveside = "top";
+
+                } else {
+                    leaveside = "right";
+                }
+            } else {
+                if (clienty >= ey2)
+                {
+                    leaveside = "left";
+                } else {
+                    leaveside = "bottom";
+                }
+            }
         }
 
     }
