@@ -26,7 +26,6 @@ Stick-to-me tracks the user mouse movement and detects when to trigger the popup
 - [Installation](#installation)
 - [Usage](#usage)
 - [Customisation](#customisation)
-- [FAQ](#faq)
 - [Support](#support)
 - [Contributing](#contributing)
 - [Donations](#contributing)
