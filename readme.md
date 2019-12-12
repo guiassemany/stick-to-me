@@ -72,16 +72,16 @@ Just download the zip file and extract on your assets folder.
 Stick to me allows a few customisations. See options below.
 | Property | Description | default |
 |--|--|--|
-| layer | jQuery select of your popup html | empty
-| fadespeed |Controls the speed of the fade animation | 400
-| trigger | Where detection of exit intent takes place | top
-| delay | Delay before showing popup when exit intent is detected | 0
-| interval | Interval between popups | 0
-| maxamount | Maximum times the popup will be triggered | 0 = unlimited
-| cookie | Set cookie to prevent opening again on the same browser | false
-| bgclickclose | Clicking on background closes the popup | true
-| escclose | pressing ESC closes the popup | true
-| onleave | function to be called when popup closes | empty fn
+| layer | jQuery select of your popup html | empty |
+| fadespeed |Controls the speed of the fade animation | 400 |
+| trigger | Where detection of exit intent takes place | top |
+| delay | Delay before showing popup when exit intent is detected | 0 |
+| interval | Interval between popups | 0 |
+| maxamount | Maximum times the popup will be triggered | 0 = unlimited |
+| cookie | Set cookie to prevent opening again on the same browser | false |
+| bgclickclose | Clicking on background closes the popup | true |
+| escclose | pressing ESC closes the popup | true |
+| onleave | function to be called when popup closes | empty fn |
 
 ## Support
 
