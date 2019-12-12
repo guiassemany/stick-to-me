@@ -2,13 +2,21 @@
 <a href="https://assemany.com">
 
 <p align="center">
-  <img width="250"  src="https://res.cloudinary.com/assemany/image/upload/v1576169320/sticktome_nzhrqm.png">
+  <img width="250"  src="https://res.cloudinary.com/assemany/image/upload/v1576176260/RGB_AI-min_thy8ta.png">
 </p>
 </a>
 
 
 
 > 🦉The jQuery plugin "Stick to me" allows you to create exit-popups on your web page, so you can capture visitors just as they are about to leave.
+
+# How it Works
+
+Stick-to-me tracks the user mouse movement and detects when to trigger the popup. See it in action on gif below.
+
+<p align="center">
+  <img src="https://res.cloudinary.com/assemany/image/upload/v1576177281/ezgif.com-optimize_pliyms.gif">
+</p>
 
 ---
 
@@ -23,6 +31,7 @@
 - [Contributing](#contributing)
 - [Donations](#contributing)
 - [License](#license)
+- [Credits](#credits)
 
 
 
@@ -70,8 +79,10 @@ Just download the zip file and extract on your assets folder.
 
 ## Customisation
 Stick to me allows a few customisations. See options below.
+
+
 | Property | Description | default |
-|--|--|--|
+|---|---|---|
 | layer | jQuery select of your popup html | empty |
 | fadespeed |Controls the speed of the fade animation | 400 |
 | trigger | Where detection of exit intent takes place | top |
@@ -111,3 +122,6 @@ Contributions are what make the open source community such an amazing place to l
 
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 - **[MIT license](http://opensource.org/licenses/mit-license.php)**
+
+## Credits
+- GIF Landing Page template - https://onepagelove.com/evolo
