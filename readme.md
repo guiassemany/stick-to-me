@@ -110,6 +110,10 @@ Contributions are what make the open source community such an amazing place to l
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
+## Postcardware
+You're free to use this package, but if it makes it to your production environment we highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using.
+
+Our address is: Rua Dias de Toledo, 91, Vila da saúde, São Paulo / SP - Brazil.
 
 ## Donations
 
