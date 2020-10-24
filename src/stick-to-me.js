@@ -165,7 +165,7 @@
                                         if (settings.cookie == true)
                                         {
                                             cookiehowm++;
-                                            document.cookie="ck_stick_visit="+cookiehowm+"; path=/";
+                                            document.cookie="ck_stick_visit="+cookiehowm+"; path=/; SameSite=lax";
                                         }
                                         lasttime = new Date().getTime();
                                     }
