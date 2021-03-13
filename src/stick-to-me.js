@@ -165,7 +165,13 @@
                                         if (settings.cookie == true)
                                         {
                                             cookiehowm++;
-                                            document.cookie="ck_stick_visit="+cookiehowm+"; path=/";
+                                            if (settings.cookieExpiration > 0) {
+                                                var expiresAt = new Date(Date.now() + (settings.cookieExpiration * 1000)).toGMTString();
+                                                document.cookie="ck_stick_visit="+cookiehowm+"; expires="+expiresAt+"; path=/";
+                                            } else {
+                                                document.cookie="ck_stick_visit="+cookiehowm+"; path=/";
+                                            }
+                                            
                                         }
                                         lasttime = new Date().getTime();
                                     }

@@ -89,6 +89,7 @@ Stick to me allows a few customisations. See options below.
 | interval | Interval between popups | 0 |
 | maxamount | Maximum times the popup will be triggered | 0 = unlimited |
 | cookie | Set cookie to prevent opening again on the same browser | false |
+| cookieExpiration | Define the cookie expiration in seconds (if set cookie to true) | none (will save the cookie as session cookie)
 | bgclickclose | Clicking on background closes the popup | true |
 | escclose | pressing ESC closes the popup | true |
 | onleave | function to be called when popup closes | empty fn |
