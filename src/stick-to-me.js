@@ -165,7 +165,12 @@
                                         if (settings.cookie == true)
                                         {
                                             cookiehowm++;
-                                            document.cookie="ck_stick_visit="+cookiehowm+"; path=/; SameSite=lax";
+                                            if (settings.cookieExpiration > 0) {
+                                                var expiresAt = new Date(Date.now() + (settings.cookieExpiration * 1000)).toGMTString();
+                                                document.cookie="ck_stick_visit="+cookiehowm+"; expires="+expiresAt+"; path=/; SameSite=lax";
+                                            } else {
+                                                document.cookie="ck_stick_visit="+cookiehowm+"; path=/; SameSite=lax";
+                                            }
                                         }
                                         lasttime = new Date().getTime();
                                     }
