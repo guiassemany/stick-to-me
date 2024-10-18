@@ -1,4 +1,3 @@
-
 <a href="https://assemany.com">
 
 <p align="center">
@@ -8,7 +7,7 @@
 
 
 
-> 🦉The jQuery plugin "Stick to me" allows you to create exit-popups on your web page, so you can capture visitors just as they are about to leave.
+> 🦉The "Stick to me" plugin allows you to create exit-popups on your web page, so you can capture visitors just as they are about to leave. It is now fully compatible with modern JavaScript frameworks and libraries, with no jQuery dependency.
 
 # How it Works
 
@@ -57,20 +56,23 @@ Just download the zip file and extract on your assets folder.
 2 - Write your popup markup
 ```html
 <div id="stickLayer" style="display:none;" class="stick_popup">
-	<div class="stick_close" onclick="$.stick_close()">X</div>
+	<div class="stick_close">&times;</div>
 	<div class="stick_content">
 	    <h1>Hello! I got your attention!</h1>
 	</div>
 </div>
 ```
  
-3 - Tell stick-to-me the id of your popup 
+3 - Initialize the plugin and specify the id of your popup 
 ```js
 <script>
-	$(document).ready(function(){
-		$.stickToMe({
+	document.addEventListener('DOMContentLoaded', function() {
+		const stickToMeInstance = stickToMe({
 			layer: '#stickLayer'			
 		});
+
+		// Add event listener to close button
+		document.querySelector('.stick_close').addEventListener('click', stickToMeInstance.close);
 	});
 </script>
 ```
@@ -82,7 +84,7 @@ Stick to me allows a few customisations. See options below.
 
 | Property | Description | default |
 |---|---|---|
-| layer | jQuery select of your popup html | empty |
+| layer | Selector of your popup html | empty |
 | fadespeed |Controls the speed of the fade animation | 400 |
 | trigger | Where detection of exit intent takes place | top |
 | delay | Delay before showing popup when exit intent is detected | 0 |
