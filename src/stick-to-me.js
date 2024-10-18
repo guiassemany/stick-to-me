@@ -20,7 +20,8 @@ const stickToMe = function (configs) {
         bgclickclose: true,
         escclose: true,
         onleave: function (e) {},
-        disableleftscroll: true	// chrome disable
+        disableleftscroll: true,	// chrome disable
+        debug: false
     };
 
     const settings = Object.assign({}, defaults, configs);
@@ -53,12 +54,20 @@ const stickToMe = function (configs) {
 
     Object.assign(settings, reqsettings);
 
+    function debugLog(message) {
+        if (settings.debug) {
+            console.log(`[Stick to Me Debug] ${message}`);
+        }
+    }
+
     document.addEventListener('mousemove', function(e) {
         lastx = e.pageX;
         lasty = e.pageY;
+        debugLog(`Mouse moved to (${lastx}, ${lasty})`);
     });
 
     document.addEventListener('mouseleave', function(e) {
+        debugLog('Mouse left the document');
         setTimeout(function() { ontheleave(e); }, settings.delay);
     });
 
@@ -72,6 +81,7 @@ const stickToMe = function (configs) {
         document.addEventListener('mousemove', function bindOffset(e) {
             if (offsetbind) {
                 document.addEventListener('mouseleave', function(e) {
+                    debugLog('Chrome-specific mouseleave event triggered');
                     setTimeout(function() { ontheleave(e); }, settings.delay);
                 });
                 document.removeEventListener("mousemove", bindOffset);
@@ -83,6 +93,7 @@ const stickToMe = function (configs) {
     window.addEventListener('resize', function() {
         windowHeight = window.innerHeight;
         windowWidth = window.innerWidth;
+        debugLog(`Window resized to ${windowWidth}x${windowHeight}`);
     });
 
     function ontheleave(e) {
@@ -108,8 +119,11 @@ const stickToMe = function (configs) {
             leaveside = clienty >= ey2 ? "left" : "bottom";
         }
 
+        debugLog(`Detected leave intent: ${leaveside}`);
+
         if (/Firefox[\/\s](\d+\.\d+)/.test(navigator.userAgent)) {
             if (clienty < 0 && clienty > -windowHeight && clientx > 0 && clientx < windowWidth) {
+                debugLog('Firefox-specific condition met, returning');
                 return;
             }
         }
@@ -123,6 +137,7 @@ const stickToMe = function (configs) {
                             if (chromealert) {
                                 const cookiehowm = getamount("ck_stick_visit");
                                 if (!settings.cookie || (settings.cookie && (cookiehowm < settings.maxamount || settings.maxamount == 0))) {
+                                    debugLog('Conditions met, firing onleave event');
                                     settings.onleave.call(this, leaveside);
 
                                     if (settings.layer != "") {
@@ -137,6 +152,7 @@ const stickToMe = function (configs) {
                                         } else {
                                             document.cookie = `ck_stick_visit=${cookiehowm}; path=/; SameSite=lax`;
                                         }
+                                        debugLog(`Cookie set: ck_stick_visit=${cookiehowm}`);
                                     }
                                     lasttime = new Date().getTime();
                                 }
@@ -156,6 +172,7 @@ const stickToMe = function (configs) {
     const stickVarMap = new WeakMap();
 
     function showbox() {
+        debugLog('Showing popup box');
         if (!stickVarMap.get(document.body)) {
             stickVarMap.set(document.body, 1);
             const blockLayer = document.createElement('div');
@@ -180,6 +197,7 @@ const stickToMe = function (configs) {
             if (settings.escclose) {
                 document.body.addEventListener('keyup', function(e) {
                     if (e.key === 'Escape') {
+                        debugLog('Escape key pressed, closing popup');
                         stick_close();
                     }
                 });
@@ -204,6 +222,7 @@ const stickToMe = function (configs) {
     }
 
     function stick_close() {
+        debugLog('Closing popup');
         const container = document.querySelector('.stick_container');
         const blockLayer = document.querySelector('.stick_block_layer');
         if (container) fadeOut(container, settings.fadespeed, () => container.remove());
