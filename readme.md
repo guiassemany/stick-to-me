@@ -95,6 +95,22 @@ Stick to me allows a few customisations. See options below.
 | bgclickclose | Clicking on background closes the popup | true |
 | escclose | pressing ESC closes the popup | true |
 | onleave | function to be called when popup closes | empty fn |
+| debug | Enable Debug mode to display console messages | false |
+
+## Debug Mode
+
+The Stick to Me plugin includes a Debug mode that provides helpful console messages to understand the plugin's behavior. When Debug mode is enabled, you will see messages related to tracking movement, detecting intent, indicating direction, and firing the popup.
+
+To enable Debug mode, set the `debug` option to `true` when initializing the plugin:
+
+```js
+const stickToMeInstance = stickToMe({
+    layer: '#stickLayer',
+    debug: true
+});
+```
+
+When Debug mode is ON, console messages will be displayed to help you understand what is happening. When Debug mode is OFF, no console messages will be shown.
 
 ## Support
 
