@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -6,37 +6,33 @@
 		* {padding:0;margin:0;}
 	</style>
 
-	<!-- jQuery !-->
-	<script src="https://code.jquery.com/jquery-3.2.0.min.js" integrity="sha256-JAW99MJVpJBGcbzEuXk4Az05s/XyDdBomFqNlM3ic+I=" crossorigin="anonymous"></script>
-
 	<!-- stick !-->
 	<link rel="stylesheet" type="text/css" href="../src/stick-to-me.css">
 	<script src="../src/stick-to-me.js"></script>
-	
-	<script>
-		
-		$(document).ready(function(){
 
-			$.stickToMe({
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			const stickToMeInstance = stickToMe({
 				layer: '#stickLayer'
 				// cookie: true,
           		// maxamount: 1,
 				// cookieExpiration: 2 * 60
 			});
-						
+
+			// Add event listener to close button
+			document.querySelector('.stick_close').addEventListener('click', stickToMeInstance.close);
 		});
-		
 	</script>
 
 </head>
 <body>
 
 	<div id="stickLayer" style="display:none;" class="stick_popup">
-		<div class="stick_close" onclick="$.stick_close()">&times;</div>
+		<div class="stick_close">&times;</div>
 		<div class="stick_content">
             <h1>Hello! I got your attention!</h1>
 		</div>
 	</div>
-	
+
 </body>
-</html> 
+</html>
