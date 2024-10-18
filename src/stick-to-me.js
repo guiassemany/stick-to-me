@@ -86,7 +86,6 @@ const stickToMe = function (configs) {
     });
 
     function ontheleave(e) {
-        console.log('ontheleave function called');
         const scrolltop = document.documentElement.scrollTop || document.body.scrollTop;
         const scrollleft = document.documentElement.scrollLeft || document.body.scrollLeft;
 
@@ -108,34 +107,25 @@ const stickToMe = function (configs) {
         } else {
             leaveside = clienty >= ey2 ? "left" : "bottom";
         }
-        console.log('Detected leave side:', leaveside);
 
         if (/Firefox[\/\s](\d+\.\d+)/.test(navigator.userAgent)) {
             if (clienty < 0 && clienty > -windowHeight && clientx > 0 && clientx < windowWidth) {
-                console.log('Firefox condition met, returning early');
                 return;
             }
         }
 
         if (settings.trigger.includes(leaveside) || settings.trigger.includes('all')) {
-            console.log('Trigger condition met');
             const recenttime = new Date().getTime();
             if ((recenttime - startuptime) >= settings.mintime) {
-                console.log('Minimum time condition met');
                 if ((recenttime - startuptime) <= settings.maxtime || settings.maxtime == 0) {
-                    console.log('Maximum time condition met');
                     if (howmanytimes < settings.maxamount || settings.maxamount == 0) {
-                        console.log('Maximum amount condition met');
                         if ((recenttime - lasttime) >= settings.interval || settings.interval == 0) {
-                            console.log('Interval condition met');
                             if (chromealert) {
                                 const cookiehowm = getamount("ck_stick_visit");
                                 if (!settings.cookie || (settings.cookie && (cookiehowm < settings.maxamount || settings.maxamount == 0))) {
-                                    console.log('Cookie condition met');
                                     settings.onleave.call(this, leaveside);
 
                                     if (settings.layer != "") {
-                                        console.log('Calling showbox()');
                                         showbox();
                                     }
                                     howmanytimes++;
@@ -149,26 +139,12 @@ const stickToMe = function (configs) {
                                         }
                                     }
                                     lasttime = new Date().getTime();
-                                } else {
-                                    console.log('Cookie condition not met');
                                 }
-                            } else {
-                                console.log('Chrome alert condition not met');
                             }
-                        } else {
-                            console.log('Interval condition not met');
                         }
-                    } else {
-                        console.log('Maximum amount condition not met');
                     }
-                } else {
-                    console.log('Maximum time condition not met');
                 }
-            } else {
-                console.log('Minimum time condition not met');
             }
-        } else {
-            console.log('Trigger condition not met');
         }
 
         if (chrome) {
@@ -180,31 +156,25 @@ const stickToMe = function (configs) {
     const stickVarMap = new WeakMap();
 
     function showbox() {
-        console.log('showbox function called');
         if (!stickVarMap.get(document.body)) {
-            console.log('Creating popup elements');
             stickVarMap.set(document.body, 1);
             const blockLayer = document.createElement('div');
             blockLayer.className = 'stick_block_layer';
             Object.assign(blockLayer.style, settings.backgroundcss);
             document.body.appendChild(blockLayer);
-            console.log('Block layer appended to body');
             fadeIn(blockLayer, settings.fadespeed);
 
             const container = document.createElement('div');
             container.className = 'stick_container';
             document.body.appendChild(container);
-            console.log('Container appended to body');
 
             const clonedLayer = layerElement.cloneNode(true);
             clonedLayer.style.display = 'block';
             Object.assign(clonedLayer.style, settings.boxcss);
             container.appendChild(clonedLayer);
-            console.log('Cloned layer appended to container');
 
             if (settings.bgclickclose) {
                 blockLayer.addEventListener('click', stick_close);
-                console.log('Background click close event listener added');
             }
 
             if (settings.escclose) {
@@ -213,11 +183,7 @@ const stickToMe = function (configs) {
                         stick_close();
                     }
                 });
-                console.log('Escape key close event listener added');
             }
-            console.log('Popup creation complete');
-        } else {
-            console.log('Popup already exists, not creating a new one');
         }
     }
 
